@@ -14,52 +14,52 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   #config.vm.box = "geerlingguy/centos7"
 
-  config.vm.define "manager" do |manager|
-    manager.vm.box = "geerlingguy/centos7"
-    manager.vm.hostname = "manager"
-    manager.vm.provision "shell", path: "dockerprov.sh"
+  config.vm.define "node1" do |node1|
+    node1.vm.box = "geerlingguy/centos7"
+    node1.vm.hostname = "node1"
+    node1.vm.provision "shell", path: "dockerprov.sh"
   #  node1.vm.network "public_network", ip: "192.168.0.17"
   #  node1.vm.network "public_network"
-  # node1.vm.network "public_network", bridge: "wlp3s0"
+    node1.vm.network "public_network", bridge: "wlp3s0"
   #  node1.vm.network "public_network", bridge: "docker0"
   #  node1.vm.network "public_network", use_dhcp_assigned_default_route: true
-    manager.vm.network "private_network", ip: "172.32.46.44"
+  #  node1.vm.network "private_network", ip: "172.32.46.44"
   end
 
-  config.vm.define "worker" do |worker|
-    worker.vm.box="geerlingguy/centos7"
-    worker.vm.hostname = "worker"
-    worker.vm.provision "shell", path: "dockerprov.sh"
+  config.vm.define "node2" do |node2|
+    node2.vm.box="geerlingguy/centos7"
+    node2.vm.hostname = "node2"
+    node2.vm.provision "shell", path: "dockerprov.sh"
   #  node2.vm.network "public_network", ip: "192.168.0.17"
   #  node2.vm.network "public_network"
-  #  worker.vm.network "worker", bridge: "wlp3s0"
+    node2.vm.network "public_network", bridge: "wlp3s0"
   #  node2.vm.network "public_network", bridge: "docker0"
   # node2.vm.network "public_network", use_dhcp_assigned_default_route: true
-    worker.vm.network "private_network", ip: "172.32.46.43"
+  #  node2.vm.network "private_network", ip: "172.32.46.43"
   end
 
-  #config.vm.define "node3" do |node3|
-  #  node3.vm.box="geerlingguy/centos7"
-  #  node3.vm.hostname = "node3"
-  #  node3.vm.provision "shell", path: "expdockerprov.sh"
+  config.vm.define "node3" do |node3|
+    node3.vm.box="geerlingguy/centos7"
+    node3.vm.hostname = "node3"
+    node3.vm.provision "shell", path: "expdockerprov.sh"
   # node3.vm.network "public_network", ip: "192.168.0.17"
-  #  node3.vm.network "public_network", bridge: "wlp3s0"
+    node3.vm.network "public_network", bridge: "wlp3s0"
   #  node3.vm.network "public_network", bridge: "docker0"
   #  node3.vm.network "public_network", use_dhcp_assigned_default_route: true
   #  node3.vm.network "private_network", ip: "172.32.46.45"
-  #end
+  end
 
-  #config.vm.define "node4" do |node4|
-  #  node4.vm.box="geerlingguy/centos7"
-  #  node4.vm.hostname = "node4"
-  #  node4.vm.provision "shell", path: "expdockerprov.sh"
+  config.vm.define "node4" do |node4|
+    node4.vm.box="geerlingguy/centos7"
+    node4.vm.hostname = "node4"
+    node4.vm.provision "shell", path: "expdockerprov.sh"
   #  node4.vm.network "public_network", ip: "192.168.0.17"
   #  node4.vm.network "public_network"
-  #  node4.vm.network "public_network", bridge: "wlp3s0"
+    node4.vm.network "public_network", bridge: "wlp3s0"
   #  node4.vm.network "public_network", bridge: "docker0"
   #  node4.vm.network "public_network", use_dhcp_assigned_default_route: true
   #  node4.vm.network "private_network", ip: "172.32.46.46"
-  #end
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

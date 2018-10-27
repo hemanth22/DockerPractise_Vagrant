@@ -1,7 +1,7 @@
 echo "Initialized Prerequistie tools."
 yum -y install epel-release
 yum -y install wget sudo*
-yum -y install figlet
+yum -y install figlet git ansible-* vim
 echo "Completed Prerequistie tools installation." | figlet
 echo "Initialized Docker Provision." | figlet
 wget -O- https://get.docker.com/ | sh
@@ -20,14 +20,14 @@ systemctl status -l firewalld
 echo "Firewall Services are active and running." | figlet
 echo "Adding Rules to firewall." | figlet
 firewall-cmd --add-port=4789/tcp --permanent
-firewall-cmd --add-port=4789/udp --permanent
 firewall-cmd --add-port=2789/tcp --permanent
-firewall-cmd --add-port=2789/udp --permanent
 firewall-cmd --add-port=7946/tcp --permanent
-firewall-cmd --add-port=7946/udp --permanent
 firewall-cmd --add-port=2377/tcp --permanent
 firewall-cmd --add-port=2376/tcp --permanent
-firewall-cmd --add-port=2377/udp --permanent
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=8080/tcp --permanent
+firewall-cmd --add-port=8888/tcp --permanent
+firewall-cmd --add-port=1521/tcp --permanent
 echo "Firewall rules configuration complete." | figlet
 echo "Restart Firewall." | figlet
 firewall-cmd --reload
